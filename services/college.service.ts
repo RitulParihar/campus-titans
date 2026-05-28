@@ -27,3 +27,14 @@ export const getColleges = async (search?: string) => {
 
   return colleges;
 };
+export const getCollegeById = async (id: string) => {
+  const college = await prisma.college.findUnique({
+    where: { id },
+    include: {
+      courses: true,
+      reviews: true,
+    },
+  });
+
+  return college;
+};

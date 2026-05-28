@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MapPin, Star } from "lucide-react";
 import { College } from "@/types";
 import { formatCurrency } from "@/utils/format";
@@ -52,10 +53,12 @@ export default function CollegeCard({
               {formatCurrency(college.fees)}
             </p>
           </div>
-
-          <button className="text-sm font-medium hover:underline">
-            View Details
-          </button>
+          <Link
+  href={`/colleges/${college.id}`}
+  className="text-sm font-medium px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 transition"
+>
+  View Details
+</Link>
         </div>
       </div>
     </div>
