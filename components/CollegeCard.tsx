@@ -12,7 +12,11 @@ export default function CollegeCard({
   return (
     <div className="bg-white border border-[var(--border)] rounded-3xl overflow-hidden hover:shadow-md transition">
 
-      <div className="h-52 bg-slate-200" />
+      <img
+  src={college.imageUrl}
+  alt={college.name}
+  className="h-52 w-full object-cover"
+/>
 
       <div className="p-6">
         

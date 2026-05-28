@@ -1,3 +1,11 @@
+import { prisma } from "@/lib/prisma";
+
 export const getColleges = async () => {
-  return [];
+  const colleges = await prisma.college.findMany({
+    orderBy: {
+      rating: "desc",
+    },
+  });
+
+  return colleges;
 };

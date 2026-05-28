@@ -22,7 +22,7 @@ export const colleges = [
     placements:
       "Strong placements across software and consulting sectors.",
     imageUrl:
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1",
+      "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a",
   },
 
   {
