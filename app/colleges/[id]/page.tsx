@@ -1,81 +1,59 @@
+import CollegeCard from "@/components/CollegeCard";
 import Container from "@/components/Container";
-import { getCollegeById } from "@/services/college.service";
-import { notFound } from "next/navigation";
+import SearchBar from "@/components/SearchBar";
+import SectionHeading from "@/components/SectionHeading";
+import { getColleges } from "@/services/college.service";
+import FiltersBar from "@/components/FiltersBar";
 
-export default async function CollegeDetailPage({
-  params,
+export default async function CollegesPage({
+  searchParams,
 }: {
-  params: { id: string };
+  searchParams: {
+    q?: string;
+    minRating?: string;
+    maxFees?: string;
+    location?: string;
+  };
 }) {
-  const college = await getCollegeById(params.id);
-
-  if (!college) {
-    return notFound();
-  }
+  const colleges = await getColleges({
+  search: searchParams.q || "",
+  minRating: searchParams.minRating
+    ? Number(searchParams.minRating)
+    : undefined,
+  maxFees: searchParams.maxFees
+    ? Number(searchParams.maxFees)
+    : undefined,
+  location: searchParams.location || "",
+});
 
   return (
     <main className="py-16">
       <Container>
-        {/* Header */}
-        <div className="mb-10">
-          <h1 className="text-4xl font-bold text-slate-900">
-            {college.name}
-          </h1>
-
-          <p className="mt-2 text-slate-600">
-            {college.location}
-          </p>
-        </div>
-
-        {/* Image */}
-        <img
-          src={college.imageUrl}
-          alt={college.name}
-          className="w-full h-[400px] object-cover rounded-3xl"
+        <SectionHeading
+          eyebrow="College Directory"
+          title="Explore top colleges across India."
+          description="Advanced filters with real-time server-side search."
         />
 
-        {/* Overview */}
-        <div className="mt-10 grid md:grid-cols-3 gap-10">
-          <div className="md:col-span-2">
-            <h2 className="text-2xl font-semibold">
-              Overview
-            </h2>
+        <div className="mt-10 max-w-xl">
+          <SearchBar />
+        </div>
+        <div className="mt-10 max-w-xl">
+  <SearchBar />
+</div>
 
-            <p className="mt-4 text-slate-600 leading-7">
-              {college.description}
-            </p>
+<FiltersBar />
 
-            <h2 className="mt-10 text-2xl font-semibold">
-              Placements
-            </h2>
+        {/* FILTER UI (we will build next step) */}
 
-            <p className="mt-4 text-slate-600 leading-7">
-              {college.placements}
-            </p>
-          </div>
-
-          {/* Sidebar */}
-          <div className="bg-white border border-[var(--border)] rounded-3xl p-6 h-fit">
-            <h3 className="text-lg font-semibold">
-              Key Details
-            </h3>
-
-            <div className="mt-6 space-y-4 text-sm">
-              <div>
-                <p className="text-slate-500">Fees</p>
-                <p className="font-semibold">
-                  ₹{college.fees}
-                </p>
-              </div>
-
-              <div>
-                <p className="text-slate-500">Rating</p>
-                <p className="font-semibold">
-                  {college.rating}/5
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {colleges.length > 0 ? (
+            colleges.map((college) => (
+              <CollegeCard key={college.id} college={college} />
+            ))
+          ) : (
+            <p className="text-slate-500">No colleges found.</p>
+          )}
         </div>
       </Container>
     </main>
