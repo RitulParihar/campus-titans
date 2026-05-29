@@ -4,6 +4,7 @@ import SearchBar from "@/components/SearchBar";
 import SectionHeading from "@/components/SectionHeading";
 import FiltersBar from "@/components/FiltersBar";
 import { getColleges } from "@/services/college.service";
+import ActiveFilters from "@/components/ActiveFilters";
 
 export default async function CollegesPage({
   searchParams,
@@ -45,7 +46,7 @@ export default async function CollegesPage({
 
         {/* FILTERS */}
         <FiltersBar />
-
+            <ActiveFilters />
         {/* GRID */}
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {colleges.length > 0 ? (

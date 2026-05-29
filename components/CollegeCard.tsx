@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MapPin, Star } from "lucide-react";
+
 import { College } from "@/types";
 import { formatCurrency } from "@/utils/format";
 
@@ -11,23 +12,24 @@ export default function CollegeCard({
   college,
 }: CollegeCardProps) {
   return (
-    <div className="bg-white border border-[var(--border)] rounded-3xl overflow-hidden hover:shadow-md transition">
+    <div className="overflow-hidden rounded-3xl border border-[var(--border)] bg-white transition hover:shadow-md">
 
       <img
-  src={college.imageUrl}
-  alt={college.name}
-  className="h-52 w-full object-cover"
-/>
+        src={college.imageUrl}
+        alt={college.name}
+        className="h-52 w-full object-cover"
+      />
 
       <div className="p-6">
-        
+
         <div className="flex items-start justify-between gap-4">
+
           <div>
             <h3 className="text-xl font-semibold text-slate-900">
               {college.name}
             </h3>
 
-            <div className="mt-2 flex items-center gap-2 text-slate-500 text-sm">
+            <div className="mt-2 flex items-center gap-2 text-sm text-slate-500">
               <MapPin size={16} />
               <span>{college.location}</span>
             </div>
@@ -40,10 +42,11 @@ export default function CollegeCard({
             />
             {college.rating}
           </div>
+
         </div>
 
         <div className="mt-6 flex items-center justify-between">
-          
+
           <div>
             <p className="text-sm text-slate-500">
               Starting Fees
@@ -53,13 +56,16 @@ export default function CollegeCard({
               {formatCurrency(college.fees)}
             </p>
           </div>
+
           <Link
-  href={`/colleges/${college.id}`}
-  className="text-sm font-medium px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 transition"
->
-  View Details
-</Link>
+            href={`/colleges/${college.id}`}
+            className="text-sm font-medium hover:underline"
+          >
+            View Details
+          </Link>
+
         </div>
+
       </div>
     </div>
   );
