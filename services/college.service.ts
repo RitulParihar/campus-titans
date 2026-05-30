@@ -1,63 +1,58 @@
 import { prisma } from "@/lib/prisma";
 
 export const getColleges = async (params: any = {}) => {
-  const search = typeof params.search === "string" ? params.search : "";
-  const minRating =
-    typeof params.minRating === "number" ? params.minRating : undefined;
-  const maxFees =
-    typeof params.maxFees === "number" ? params.maxFees : undefined;
-  const location =
-    typeof params.location === "string" ? params.location : "";
+  const search = params.search || "";
+  const minRating = params.minRating ? Number(params.minRating) : undefined;
+  const maxFees = params.maxFees ? Number(params.maxFees) : undefined;
+  const location = params.location || "";
 
-  const colleges = await prisma.college.findMany({
-    where: {
-      AND: [
-        search
-          ? {
-              OR: [
-                {
-                  name: {
-                    contains: search,
-                    mode: "insensitive",
-                  },
-                },
-                {
-                  location: {
-                    contains: search,
-                    mode: "insensitive",
-                  },
-                },
-              ],
-            }
-          : {},
-        minRating
-          ? {
-              rating: {
-                gte: minRating,
-              },
-            }
-          : {},
-        maxFees
-          ? {
-              fees: {
-                lte: maxFees,
-              },
-            }
-          : {},
-        location
-          ? {
-              location: {
-                contains: location,
-                mode: "insensitive",
-              },
-            }
-          : {},
-      ],
-    },
-    orderBy: {
-      rating: "desc",
-    },
-  });
+  const where: any = {};
 
-  return colleges;
+  if (search) {
+    where.OR = [
+      {
+        name: {
+          contains: search,
+          mode: "insensitive",
+        },
+      },
+      {
+        location: {
+          contains: search,
+          mode: "insensitive",
+        },
+      },
+    ];
+  }
+
+  if (minRating !== undefined && !isNaN(minRating)) {
+    where.rating = {
+      gte: minRating,
+    };
+  }
+
+  if (maxFees !== undefined && !isNaN(maxFees)) {
+    where.fees = {
+      lte: maxFees,
+    };
+  }
+
+  if (location) {
+    where.location = {
+      contains: location,
+      mode: "insensitive",
+    };
+  }
+
+  try {
+    return await prisma.college.findMany({
+      where,
+      orderBy: {
+        rating: "desc",
+      },
+    });
+  } catch (err) {
+    console.error("getColleges error:", err);
+    return [];
+  }
 };
