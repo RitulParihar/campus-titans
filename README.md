@@ -65,10 +65,13 @@ https://campus-titans-gr5n.vercel.app
 (Add screenshots here)
 
 - Homepage
-- <img width="1314" height="877" alt="image" src="https://github.com/user-attachments/assets/d3cd3d59-fee5-49fb-8281-bf7d27b0601b" />
+ <img width="1314" height="877" alt="image" src="https://github.com/user-attachments/assets/d3cd3d59-fee5-49fb-8281-bf7d27b0601b" />
 - Colleges Page
 - Compare Page
+  <img width="1008" height="875" alt="image" src="https://github.com/user-attachments/assets/00b769b6-d813-4a79-9363-cdefbda3cfff" />
 - Wishlist Page
+  <img width="1266" height="871" alt="image" src="https://github.com/user-attachments/assets/40407d17-fdb2-4794-a4bf-357ebe949b7c" />
+
 
 ---
 
