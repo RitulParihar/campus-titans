@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { CompareProvider } from "@/components/compare/CompareContext";
+import CompareBar from "@/components/compare/CompareBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +32,10 @@ export default function RootLayout({
     >
       <body>
         <CompareProvider>
-          <Navbar />
-          {children}
-        </CompareProvider>
+  <Navbar />
+  {children}
+  <CompareBar />
+</CompareProvider>
       </body>
     </html>
   );
