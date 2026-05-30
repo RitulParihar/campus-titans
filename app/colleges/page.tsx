@@ -8,7 +8,7 @@ import ActiveFilters from "@/components/ActiveFilters";
 import { getColleges } from "@/services/college.service";
 
 export const dynamic = "force-dynamic";
-
+export const revalidate = 0;
 interface SearchParams {
   q?: string;
   minRating?: string;
