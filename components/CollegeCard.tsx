@@ -4,13 +4,18 @@ import { MapPin, Star } from "lucide-react";
 import { College } from "@/types";
 import { formatCurrency } from "@/utils/format";
 
+import CompareButton from "@/components/compare/CompareButton";
+
 interface CollegeCardProps {
   college: College;
+ 
 }
 
 export default function CollegeCard({
   college,
+  
 }: CollegeCardProps) {
+
   return (
     <div className="overflow-hidden rounded-3xl border border-[var(--border)] bg-white transition hover:shadow-md">
 
@@ -57,12 +62,20 @@ export default function CollegeCard({
             </p>
           </div>
 
-          <Link
-            href={`/colleges/${college.id}`}
-            className="text-sm font-medium hover:underline"
-          >
-            View Details
-          </Link>
+          <div className="flex items-center gap-4">
+
+            <Link
+              href={`/colleges/${college.id}`}
+              className="text-sm font-medium hover:underline"
+            >
+              View Details
+            </Link>
+
+            <CompareButton
+  collegeId={college.id}
+/>
+
+          </div>
 
         </div>
 
