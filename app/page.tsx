@@ -2,7 +2,7 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import SearchBar from "@/components/SearchBar";
 import SectionHeading from "@/components/SectionHeading";
-
+export const dynamic = "force-dynamic";
 export default function HomePage() {
   return (
     <main>
