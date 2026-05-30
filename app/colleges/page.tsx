@@ -6,7 +6,7 @@ import FiltersBar from "@/components/FiltersBar";
 import ActiveFilters from "@/components/ActiveFilters";
 
 import { getColleges } from "@/services/college.service";
-
+export const dynamic = "force-dynamic";
 export default async function CollegesPage({
   searchParams,
 }: {
