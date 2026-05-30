@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Container from "./Container";
+import AuthStatus from "./AuthStatus";
 
 export default function Navbar() {
   return (
     <header className="border-b border-[var(--border)] bg-[var(--background)]">
       <Container>
-        <div className="flex items-center justify-between h-20">
-          
+        <div className="flex h-20 items-center justify-between">
+
           <Link
             href="/"
             className="text-2xl font-semibold tracking-tight"
@@ -37,15 +38,8 @@ export default function Navbar() {
             </Link>
           </nav>
 
-          <div className="flex items-center gap-3">
-            <button className="px-5 py-2 border border-[var(--border)] rounded-full text-sm hover:bg-white transition">
-              Login
-            </button>
+          <AuthStatus />
 
-            <button className="px-5 py-2 rounded-full bg-[var(--primary)] text-white text-sm hover:opacity-90 transition">
-              Sign Up
-            </button>
-          </div>
         </div>
       </Container>
     </header>

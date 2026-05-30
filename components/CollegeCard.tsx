@@ -5,6 +5,7 @@ import { College } from "@/types";
 import { formatCurrency } from "@/utils/format";
 
 import CompareButton from "@/components/compare/CompareButton";
+import SaveButton from "./SaveButton";
 
 interface CollegeCardProps {
   college: College;
@@ -40,13 +41,21 @@ export default function CollegeCard({
             </div>
           </div>
 
-          <div className="flex items-center gap-1 text-sm font-medium">
-            <Star
-              size={16}
-              className="fill-yellow-400 text-yellow-400"
-            />
-            {college.rating}
-          </div>
+          <div className="flex items-center gap-3">
+
+  <SaveButton
+    collegeId={college.id}
+  />
+
+  <div className="flex items-center gap-1 text-sm font-medium">
+    <Star
+      size={16}
+      className="fill-yellow-400 text-yellow-400"
+    />
+    {college.rating}
+  </div>
+
+</div>
 
         </div>
 
