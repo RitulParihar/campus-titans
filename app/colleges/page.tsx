@@ -6,30 +6,27 @@ import FiltersBar from "@/components/FiltersBar";
 import ActiveFilters from "@/components/ActiveFilters";
 
 import { getColleges } from "@/services/college.service";
+
 export const dynamic = "force-dynamic";
+
+interface SearchParams {
+  q?: string;
+  minRating?: string;
+  maxFees?: string;
+  location?: string;
+}
+
 export default async function CollegesPage({
   searchParams,
 }: {
-  searchParams: Promise<{
-    q?: string;
-    minRating?: string;
-    maxFees?: string;
-    location?: string;
-  }>;
+  searchParams?: SearchParams;
 }) {
-  const params = await searchParams;
+  const params = searchParams || {};
 
   const colleges = await getColleges({
     search: params.q || "",
-
-    minRating: params.minRating
-      ? Number(params.minRating)
-      : undefined,
-
-    maxFees: params.maxFees
-      ? Number(params.maxFees)
-      : undefined,
-
+    minRating: params.minRating ? Number(params.minRating) : undefined,
+    maxFees: params.maxFees ? Number(params.maxFees) : undefined,
     location: params.location || "",
   });
 
@@ -53,15 +50,10 @@ export default async function CollegesPage({
         <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {colleges.length > 0 ? (
             colleges.map((college) => (
-              <CollegeCard
-                key={college.id}
-                college={college}
-              />
+              <CollegeCard key={college.id} college={college} />
             ))
           ) : (
-            <p className="text-slate-500">
-              No colleges found.
-            </p>
+            <p className="text-slate-500">No colleges found.</p>
           )}
         </div>
       </Container>
