@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  Campus Titans — College Discovery Platform
 
-## Getting Started
+A full-stack AI-powered College Discovery Platform that helps students explore, compare, and save colleges across India with real-time filtering, authentication, and modern UI.
 
-First, run the development server:
+---
+
+##  Live Demo
+https://campus-titans-gr5n.vercel.app
+
+---
+
+##  Features
+
+-  Real-time college search (URL-based)
+-  Advanced filtering (fees, rating, location)
+-  College comparison system (side-by-side view)
+-  Wishlist / Save colleges (DB-powered)
+-  Authentication (Email & Password)
+-  Fast, responsive UI
+-  Fully deployed on Vercel
+
+---
+
+##  Tech Stack
+
+**Frontend**
+- Next.js (App Router)
+- React
+- TypeScript
+- TailwindCSS
+
+**Backend**
+- Next.js API Routes
+- Prisma ORM
+
+**Database**
+- PostgreSQL (Neon)
+
+**Deployment**
+- Vercel
+
+---
+
+##  Architecture Decisions
+
+- Used **Server Components** for data fetching
+- Prisma used for all DB operations
+- URL-driven state for search & filters
+- Dynamic rendering (`force-dynamic`) to avoid SSR issues
+- Session-based authentication using cookies
+
+---
+
+##  Key Challenges Solved
+
+- Fixed Vercel Prisma deployment issues
+- Solved SSR prerender crashes using dynamic rendering
+- Built URL-synced filtering system
+- Implemented production-safe authentication flow
+
+---
+
+##  Screenshots
+
+(Add screenshots here)
+
+- Homepage
+- <img width="1314" height="877" alt="image" src="https://github.com/user-attachments/assets/d3cd3d59-fee5-49fb-8281-bf7d27b0601b" />
+- Colleges Page
+- Compare Page
+- Wishlist Page
+
+---
+
+##  Setup Instructions
 
 ```bash
+git clone https://github.com/yourusername/campus-titans
+cd campus-titans
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
